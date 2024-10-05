@@ -2,21 +2,22 @@ import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
   {
-    author: {
+    name: {
       type: String,
       required: true,
     },
-    title: {
-      type: Number,
+    password: {
+      type: String,
       required: true,
+      minLength: 8,
     },
-    publisher: {
+    email: {
       type: String,
       required: true,
     },
-    description: { type: String },
-    rating_avg: { type: Number },
-    price: { type: Number },
+    bio: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
