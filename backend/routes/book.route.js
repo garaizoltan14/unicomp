@@ -10,21 +10,22 @@ import {
   createReview,
   getAllReview,
 } from "../controllers/review.controller.js";
+import { isBookIdValid, isBookValid } from "../functions/middleware.js";
 
 const bookRouter = express.Router();
 
-bookRouter.post("/", createBook);
+bookRouter.post("/", isBookValid, createBook);
 
 bookRouter.get("/", getAllBooks);
 
-bookRouter.get("/:id", getBook);
+bookRouter.get("/:id", isBookIdValid, getBook);
 
-bookRouter.patch("/:id", updateBook);
+bookRouter.patch("/:id", [isBookIdValid, isBookValid], updateBook);
 
-bookRouter.delete("/:id", deleteBook);
+bookRouter.delete("/:id", isBookIdValid, deleteBook);
 
-bookRouter.post("/:bookid/reviews", createReview);
+bookRouter.post("/:bookid/reviews", isBookIdValid, createReview);
 
-bookRouter.get("/:bookid/reviews", getAllReview);
+bookRouter.get("/:bookid/reviews", isBookIdValid, getAllReview);
 
 export default bookRouter;
