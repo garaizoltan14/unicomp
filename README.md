@@ -1,2 +1,3 @@
 # unicomp
-unicomp felvételi feladat  - Garai Zoltán / 2024
+
+unicomp felvételi feladat - Garai Zoltán / 2024

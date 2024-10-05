@@ -5,6 +5,9 @@ const userSchema = mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
     },
     password: {
       type: String,
@@ -13,7 +16,10 @@ const userSchema = mongoose.Schema(
     },
     email: {
       type: String,
+      unique: true,
       required: true,
+      lowercase: true,
+      trim: true,
     },
     bio: {
       type: String,

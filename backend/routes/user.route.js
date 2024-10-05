@@ -4,13 +4,18 @@ import {
   getUser,
   loginUser,
 } from "../controllers/user.controller.js";
+import {
+  isUserUnique,
+  isUserValid,
+  loginRequired,
+} from "../functions/middleware.js";
 
 const userRouter = express.Router();
 
-userRouter.post("/", createUser);
+userRouter.post("/", [isUserValid, isUserUnique], createUser);
 
 userRouter.post("/login", loginUser);
 
-userRouter.get("me", getUser);
+userRouter.get("/me", loginRequired, getUser);
 
 export default userRouter;
