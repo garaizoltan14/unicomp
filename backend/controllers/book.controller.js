@@ -1,11 +1,12 @@
 import Book from "../models/book.model.js";
+import Review from "../models/review.model.js";
 import mongoose from "mongoose";
 
 export const createBook = async (req, res) => {
-  const book = req.body;
-  const newBook = await Book.create(book);
-
   try {
+    const book = req.body;
+    const newBook = await Book.create(book);
+
     await newBook.save();
     res.status(201).json({ success: true, data: newBook });
   } catch (error) {
@@ -18,7 +19,6 @@ export const getAllBooks = async (req, res) => {
     const books = await Book.find({});
     res.status(200).json({ success: true, data: books });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };
@@ -29,15 +29,14 @@ export const getBook = async (req, res) => {
     const book = await Book.findById(id);
     res.status(200).json({ success: true, data: book });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 
 export const updateBook = async (req, res) => {
-  const { id } = req.params;
-  const book = req.body;
   try {
+    const { id } = req.params;
+    const book = req.body;
     const updated = await Book.findByIdAndUpdate(id, book, { new: true });
     res.status(200).json({ success: true, data: updated });
   } catch (error) {
@@ -46,13 +45,19 @@ export const updateBook = async (req, res) => {
 };
 
 export const deleteBook = async (req, res) => {
-  const { id } = req.params;
   try {
+    const { id } = req.params;
+
+    // delete all associated reviews
+    const book = await Book.findById(id);
+    const toBeDeleted = book.reviews.map((e) => e.toString());
+    console.log(book.reviews, toBeDeleted);
+    await Review.deleteMany({ _id: { $in: toBeDeleted } });
+
     await Book.findByIdAndDelete(id);
     res.status(200).json({ success: true, message: "Book deleted" });
-    // delete all associated reviews
-    // TODO
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: "Server Error" });
   }
 };

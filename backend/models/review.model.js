@@ -4,11 +4,9 @@ const reviewSchema = mongoose.Schema(
   {
     owner: {
       type: mongoose.ObjectId,
-      required: true,
     },
     book: {
       type: mongoose.ObjectId,
-      required: true,
     },
     rating: {
       type: String,

@@ -10,7 +10,12 @@ import {
   createReview,
   getAllReview,
 } from "../controllers/review.controller.js";
-import { isBookIdValid, isBookValid } from "../functions/middleware.js";
+import {
+  isBookIdValid,
+  isBookValid,
+  isReviewValid,
+  loginRequired,
+} from "../functions/middleware.js";
 
 const bookRouter = express.Router();
 
@@ -24,8 +29,12 @@ bookRouter.patch("/:id", [isBookIdValid, isBookValid], updateBook);
 
 bookRouter.delete("/:id", isBookIdValid, deleteBook);
 
-bookRouter.post("/:bookid/reviews", isBookIdValid, createReview);
+bookRouter.post(
+  "/:bookId/reviews",
+  [loginRequired, isBookIdValid, isReviewValid],
+  createReview
+);
 
-bookRouter.get("/:bookid/reviews", isBookIdValid, getAllReview);
+bookRouter.get("/:bookId/reviews", isBookIdValid, getAllReview);
 
 export default bookRouter;

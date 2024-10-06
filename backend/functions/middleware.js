@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import User from "../models/user.model.js";
 
-// middleware - checking for valid ids
+// middleware - checking for valid book ids
 export function isBookIdValid(req, res, next) {
-  const { id } = req.params;
+  const id = req.params.id || req.params.bookId;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ success: false, message: "Book not found" });
   }
@@ -43,17 +43,16 @@ export async function isUserUnique(req, res, next) {
     var userExists = await User.findOne({ name: req.body.name });
     if (userExists) {
       return res
-        .status(411)
+        .status(400)
         .json({ success: false, message: "Username already exists !" });
     }
     userExists = await User.findOne({ email: req.body.email });
     if (userExists) {
       return res
-        .status(411)
+        .status(400)
         .json({ success: false, message: "Email already exists !" });
     }
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ success: false, message: "Server Error" });
   }
   next();
@@ -61,10 +60,43 @@ export async function isUserUnique(req, res, next) {
 
 // middleware - check login
 export function loginRequired(req, res, next) {
-  console.log(req.user);
   if (req.user) {
     next();
   } else {
     return res.status(401).json({ message: "Unauthorized user!!" });
   }
+}
+
+// middleware - checking for a valid review object (all required fields are present / values are correct)
+export function isReviewValid(req, res, next) {
+  const review = req.body;
+  if (!review.rating || !review.text) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Please provide all fields" });
+  }
+  if (review.text.length < 30) {
+    return res.status(400).json({
+      success: false,
+      message: "Review main text is too short to be acceptable",
+    });
+  }
+  if (review.rating < 1 || review.rating > 5) {
+    return res.status(400).json({
+      success: false,
+      message: "Review rating is invalid (valid range: 1-5)",
+    });
+  }
+  next();
+}
+
+// middleware - checking for valid review ids
+export function isReviewIdValid(req, res, next) {
+  const id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res
+      .status(404)
+      .json({ success: false, message: "Review not found" });
+  }
+  next();
 }
