@@ -154,7 +154,7 @@ bookRouter.get("/:id", isBookIdValid, getBook);
  *           type: string
  *         required: true
  *         description: A könyv azonosítója
- *    requestBody:
+ *     requestBody:
  *      required: true
  *      content:
  *        application/json:

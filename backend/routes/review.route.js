@@ -2,7 +2,7 @@
  * @swagger
  * components:
  *   schemas:
- *     Reviews:
+ *     Review:
  *       type: object
  *       required:
  *         - rating
@@ -61,7 +61,7 @@ const reviewRouter = express.Router();
  *           type: string
  *         required: true
  *         description: Az értékelés azonosítója
- *    requestBody:
+ *     requestBody:
  *      required: true
  *      content:
  *        application/json:

@@ -73,9 +73,9 @@ const options = {
     ],
   },
   apis: [
-    "./routes/book.route.js",
-    "./routes/review.route.js",
-    "./routes/user.route.js",
+    "backend/routes/book.route.js",
+    "backend/routes/review.route.js",
+    "backend/routes/user.route.js",
   ],
 };
 
