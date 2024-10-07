@@ -7,6 +7,7 @@ import reviewRouter from "./routes/review.route.js";
 import jsonwebtoken from "jsonwebtoken";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUiExpress from "swagger-ui-express";
+import cors from "cors";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use((req, res, next) => {
   if (req.headers && req.headers.authorization) {
