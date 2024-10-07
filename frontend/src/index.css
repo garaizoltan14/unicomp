@@ -1,0 +1,54 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 16px;
+  background: #112ea4;
+  background: linear-gradient(to bottom, #112ea4 0%, #4daece 64%);
+  min-width: 240px;
+  width: 50vw;
+  max-width: 480px;
+  margin: 120px auto;
+}
+
+.register-form {
+  width: 80%;
+  margin: 0px auto;
+}
+
+.form-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 32px;
+  color: white;
+}
+
+.form-item {
+  margin: 16px auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  color: white;
+}
+
+.form-input {
+  min-width: 120px;
+  width: 100%;
+  max-width: 240px;
+  font-size: 1.1rem;
+}
+
+.confirmButton {
+  margin: 16px auto;
+  padding: 4px 8px;
+  font-size: 1.2rem;
+  border: 1px solid darkblue;
+  border-radius: 8px;
+  background: darkblue;
+  color: white;
+}
