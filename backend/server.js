@@ -5,6 +5,8 @@ import userRouter from "./routes/user.route.js";
 import bookRouter from "./routes/book.route.js";
 import reviewRouter from "./routes/review.route.js";
 import jsonwebtoken from "jsonwebtoken";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
 
 dotenv.config();
 
@@ -20,7 +22,6 @@ app.use((req, res, next) => {
       "UNICOMP",
       function (err, decode) {
         if (err) {
-          console.log(err);
           req.user = undefined;
         }
         req.user = decode;
@@ -40,6 +41,51 @@ app.use("/api/reviews", reviewRouter);
 app.get("/", (req, res) => {
   res.send("Server is ready");
 });
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "UNICOMP Felvételi feladat API Dokumentáció",
+      version: "1.0.0",
+      description:
+        "Az alábbi dokumentáció bemutatja az elkészült UNICOMP Felvételi feladat API végpointjait, illetve az ezek használatához szükséges paramétereket és egyéb információkat. A dokumentáció a Swagger eszközzel készült.",
+    },
+    servers: [
+      {
+        url: "http://localhost:5000/",
+      },
+    ],
+    basePath: "/",
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
+  },
+  apis: [
+    "./routes/book.route.js",
+    "./routes/review.route.js",
+    "./routes/user.route.js",
+  ],
+};
+
+const swaggerDoc = swaggerJsdoc(options);
+
+app.use(
+  "/api-docs",
+  swaggerUiExpress.serve,
+  swaggerUiExpress.setup(swaggerDoc)
+);
 
 app.listen(PORT, () => {
   connectDB();
