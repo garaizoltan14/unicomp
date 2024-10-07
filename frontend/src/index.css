@@ -6,6 +6,7 @@
   border-radius: 16px;
   background: #112ea4;
   background: linear-gradient(to bottom, #112ea4 0%, #4daece 64%);
+  box-shadow: 5px 5px 15px 5px #03081e;
   min-width: 240px;
   width: 50vw;
   max-width: 480px;
@@ -36,11 +37,26 @@
   color: white;
 }
 
+.form-error {
+  font-size: 1rem;
+  margin: -8px auto 16px auto;
+  color: red;
+  background-color: white;
+  opacity: 0.5;
+  font-style: italic;
+  padding: 2px 0;
+  width: 80%;
+}
+
 .form-input {
   min-width: 120px;
   width: 100%;
   max-width: 240px;
   font-size: 1.1rem;
+}
+
+.input-invalid {
+  box-shadow: 1px 1px 3px 1px darkred;
 }
 
 .confirmButton {
