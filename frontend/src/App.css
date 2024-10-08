@@ -1,6 +1,64 @@
 #root {
-  max-width: 1280px;
+  text-align: center;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  min-width: 720px;
+  margin: 0px auto;
+}
+
+.content-view {
+  background-color: #4daece;
+  border-radius: 5px;
+  min-height: 600px;
+  height: fit-content;
+}
+
+.header {
+  height: 100px;
+  background: linear-gradient(
+    to right,
+    #112ea4 0%,
+    #4daece 35%,
+    #4daece 70%,
+    #112ea4
+  );
+  border-bottom: 5px solid white;
+  border-radius: 5px;
+}
+
+.title {
+  height: 50%;
+  width: 100%;
   text-align: center;
+  font-size: 2.5rem;
+  padding: 8px;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navlink {
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navlink:hover {
+  background-color: #112ea4;
 }

@@ -41,8 +41,7 @@
   font-size: 1rem;
   margin: -8px auto 16px auto;
   color: red;
-  background-color: white;
-  opacity: 0.5;
+  background-color: rgba(255, 255, 255, 0.5);
   font-style: italic;
   padding: 2px 0;
   width: 80%;
@@ -62,9 +61,164 @@
 .confirmButton {
   margin: 16px auto;
   padding: 4px 8px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border: 1px solid darkblue;
   border-radius: 8px;
   background: darkblue;
   color: white;
+}
+
+.book-container {
+  padding: 16px 32px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bookcard {
+  position: relative;
+  min-width: 200px;
+  max-width: 200px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  margin: 16px 16px;
+}
+
+.bookcard:hover {
+  border: 1px solid darkblue;
+  box-shadow: 1px 1px 3px 1px darkblue;
+}
+
+.book-image {
+  width: 90%;
+  height: auto;
+  padding: 8px;
+}
+
+p {
+  margin: 4px;
+}
+
+.booktitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.author {
+  font-size: 0.9rem;
+}
+
+.publisher {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.description {
+  font-size: 0.8rem;
+}
+
+.rating {
+  font-size: 1.1rem;
+}
+
+.ratingbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.oncard {
+  right: 25px;
+  top: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ondetails {
+  right: 50px;
+  top: 25px;
+  font-size: 1.5rem;
+}
+
+.bookDetails {
+  position: relative;
+  margin: 16px auto 0px auto;
+  padding: 8px 16px;
+  display: flex;
+  width: 80%;
+}
+
+.image-holder {
+  width: 30%;
+  margin: 4px;
+}
+
+.image-holder img {
+  width: 100%;
+  height: 100%;
+}
+
+.details-holder {
+  padding-top: 16px;
+  width: 70%;
+  text-align: center;
+  background-color: cornsilk;
+  border-radius: 5px;
+}
+
+.details-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.details-author {
+  margin-top: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.details-publisher {
+  margin-top: 8px;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.details-description {
+  margin-top: 24px;
+  font-size: 1rem;
+}
+
+.buttons-holder {
+  margin: 4px auto;
+  display: flex;
+  justify-content: space-around;
+  min-width: 350px;
+  max-width: 35%;
+  background-color: cornsilk;
+  border-radius: 5px;
+}
+
+.editbutton {
+  margin: 8px auto;
+  padding: 4px 8px;
+  font-size: 1.1rem;
+  border: 1px solid darkblue;
+  border-radius: 8px;
+  background: white;
+  align-items: center;
+}
+
+.editbutton span {
+  margin-left: 8px;
+}
+
+.reviews-holder {
+  margin: 8px auto;
+  padding: 8px 16px;
+  width: 80%;
+  background-color: cornsilk;
+  border-radius: 5px;
 }

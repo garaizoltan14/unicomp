@@ -1,7 +1,16 @@
+import { Outlet } from "react-router";
 import "./App.css";
+import Header from "./Components/Header";
 
 function App() {
-  return <div>Ez itten a kezdőlap, work in progress ...</div>;
+  return (
+    <div className="main-div">
+      <Header />
+      <div className="content-view">
+        <Outlet />
+      </div>
+    </div>
+  );
 }
 
 export default App;
