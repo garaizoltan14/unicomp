@@ -68,6 +68,10 @@
   color: white;
 }
 
+.confirmButton:hover {
+  box-shadow: 1px 1px 3px 1px darkblue;
+}
+
 .book-container {
   padding: 16px 32px;
   width: 100%;
@@ -209,6 +213,11 @@ p {
   border-radius: 8px;
   background: white;
   align-items: center;
+}
+
+.editbutton:hover {
+  background-color: darkblue;
+  color: white;
 }
 
 .editbutton span {

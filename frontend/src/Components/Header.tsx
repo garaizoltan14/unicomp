@@ -8,19 +8,19 @@ const Header = () => {
       </div>
       <div className="navbar">
         <Link to={"/register"} className="navlink">
-          Register
+          Regisztráció
         </Link>
         <Link to={"/"} className="navlink">
-          Login
+          Bejelentkezés
         </Link>
         <Link to={"/"} className="navlink" hidden>
-          Me
+          Profilom
         </Link>
         <Link to={"/books"} className="navlink">
-          Books
+          Könyvek
         </Link>
         <Link to={"/"} className="navlink">
-          Create Book
+          Könyv hozzáadása
         </Link>
       </div>
     </div>

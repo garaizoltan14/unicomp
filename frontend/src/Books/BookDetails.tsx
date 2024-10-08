@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 import { Book } from "../api/book.api";
 import { FaStar } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
@@ -7,6 +7,7 @@ import ReviewList from "../Reviews/ReviewList";
 
 const BookDetails = () => {
   const book = useLoaderData() as Book;
+  const { bookid } = useParams();
 
   return (
     <>
@@ -39,7 +40,7 @@ const BookDetails = () => {
         </button>
       </div>
       <div className="reviews-holder">
-        <ReviewList />
+        <ReviewList bookid={bookid} />
       </div>
     </>
   );
